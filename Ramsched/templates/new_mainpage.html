@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %} Artists {% endblock %}
+
+{% block content %}
+	<form id="review" method="POST">
+    <fieldset>
+	<h1>Register Now!</h1>
+	<label>Last Name: 
+		<input type="text" id="last" name="last" placeholder="Enter your name here.">  
+	</label>
+    <br>
+    <label>First name: 
+        <input type="text" id="first" name="first" placeholder="Enter your number here.">
+    <br>
+    <label>email: 
+        <input type="text" id="email" name="email" placeholder="Enter your number here.">
+    </label>
+    <br>
+    <label>phone number: 
+        <input type="text" id="phone" name="phone" placeholder="Enter your number here.">
+    </label>
+    <br>
+    <label>gender: 
+        <input type="text" id="gender" name="gender" placeholder="Enter your number here.">
+    </label>
+    <br>
+    <label>age: 
+        <input type="text" id="age" name="age" placeholder="Enter your number here.">
+    </label>
+    <br>
+    <br>
+    <label>Preferred Time of Session: </label>
+    <select id="SessTime" name="SessTime">
+        <option value="time" disabled selected required>Session time:</option>
+        <option value="8:00am">8:00am</option>
+        <option value="9:00am">9:00am</option>
+        <option value="10:00am">10:00am</option>
+        <option value="11:00am">12:00pm</option>
+        <option value="12:00pm">1:00pm</option>
+        <option value="1:00pm">1:00pm</option>
+        <option value="2:00pm">2:00pm</option>
+        <option value="3:00pm">3:00pm</option>
+        <option value="4:00pm">4:00pm</option>
+    </select>
+    <br>
+    <br>
+    <label>
+        <input type="submit" id="rambtn" Name="rambtn" value="Submit">
+    </label>
+    </fieldset>
+        {% csrf_token %}
+	</form>
+	<hr>
+  <h1>Registered Clients</h1>
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Last Name</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Contact Number</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for x in client %}
+    <tr>
+      <td>{{x.last }}</td>
+      <td>{{x.first }}</td>
+      <td>{{x.email }}</td>
+      <td>{{x.phone }}</td>
+      <td>{{x.gender }}</td>
+      <td>{{x.age }}</td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table> 
+{% endblock %}

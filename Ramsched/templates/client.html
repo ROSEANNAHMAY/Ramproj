@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} Client Informations {% endblock %}
+
+{% block content %}
+
+<body>
+  <h1>Clients List Page</h1>
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Client name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for x in clients %}
+    <tr>
+      <td>{{x.first }} {{x.last}}</td>
+      <td>{{x.email }}</td>
+      <td>{{x.phone }}</td>
+      <td>{{x.gender }}</td>
+      <td>{{x.age }}</td>
+      <td><a href="{% url 'update-client' x.id %}" class="btn btn-primary"style="background-color:#1E1828;">Update</a></td>
+      <td><a href="{% url 'delete-client' x.id %}" class="btn btn-danger"style="background-color:#9D3E4E;">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table> 
+
+<a href="{% url 'add-client' %}" class="btn btn-primary"style="background-color:#1E1828;">Register client</a>
+{% endblock %}

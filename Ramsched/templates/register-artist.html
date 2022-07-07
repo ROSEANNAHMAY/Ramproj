@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} Artists {% endblock %}
+
+{% block content %}
+<h1>Artist Page</h1>
+
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Artist</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for x in artist_names %}
+    <tr>
+      <td>{{x.artist_names }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+<h1>Add Artists</h1>
+	<form id="artist" method="POST">
+    <fieldset>
+	<h1><center>Register Now!</center></h1>
+	<label>Last Name: 
+		<input type="text" id="last" name="last" placeholder="Enter your name here.">  
+	</label>
+    <br>
+  <label>
+      <input type="submit" id="rambtn" Name="rambtn" value="Submit">
+  </label>
+  </fieldset>
+      {% csrf_token %}
+</form>
+{% endblock %}

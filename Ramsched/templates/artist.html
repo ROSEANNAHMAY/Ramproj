@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Service {% endblock %}
+
+{% block content %}
+
+<body>
+  <h1>Artists List Page</h1>
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Artist</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for x in artists %}
+    <tr>
+      <td>{{x.artistname }}</td>
+      <td><a href="{% url 'update-artist' x.id %}" class="btn btn-primary"style="background-color:#1E1828;">Update</a></td>
+      <td><a href="{% url 'delete-artist' x.id %}" class="btn btn-danger"style="background-color:#9D3E4E;">Delete</a></td>
+    </tr>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table> 
+
+<a href="{% url 'add-artist' %}" class="btn btn-primary" style="background-color:#1E1828;">Register artist</a>
+{% endblock %}
